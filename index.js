@@ -1,7 +1,10 @@
 const express = require('express')
+const anova = require('ml-anova')
 const app = express()
 app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
+    const data= req.body.data
+    const classes = req.body.classes
+    const result = anova.oneWay(data,classes)
+    res.json(result)
 })
 app.listen(process.env.PORT || 3000)
