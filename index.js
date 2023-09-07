@@ -1,10 +1,12 @@
 const express = require("express");
 const anova = require("ml-anova");
+const cors = require("cors");
 const app = express();
 const { urlencoded, json } = require("body-parser");
 
 app.use(urlencoded({ extended: false }));
 app.use(json());
+app.use(cors());
 
 app.all("/", (req, res) => {
   const data = req.body.data;
